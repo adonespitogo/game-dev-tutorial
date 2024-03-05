@@ -33,5 +33,3 @@ func (scene *Scene) Start() {
 func (scene *Scene) End() {
 	fmt.Printf("Game over! Mage Life: %d", scene.Mage.Life)
 }
-
-//test
