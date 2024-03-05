@@ -12,7 +12,7 @@ type Scene struct {
 }
 
 func (scene *Scene) Start() {
-    scene.Mage = &Player{Name: "Mage", Life: 10, Atk: 5}
+	scene.Mage = &Player{Name: "Mage", Life: 10, Atk: 5}
 
 	monster1 := &Monster{Name: "Monster 1", Life: 10, Atk: 5, Def: 2}
 	player1 := &Player{Name: "Player 1", Life: 1, Atk: 10}
@@ -27,9 +27,11 @@ func (scene *Scene) Start() {
 
 	fmt.Printf("Monster life after attack: %d\n", monster1.Life)
 
-    scene.End()
+	scene.End()
 }
 
 func (scene *Scene) End() {
-    fmt.Printf("Game over! Mage Life: %d", scene.Mage.Life)
+	fmt.Printf("Game over! Mage Life: %d", scene.Mage.Life)
 }
+
+//test
