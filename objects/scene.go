@@ -9,23 +9,26 @@ func NewScene() *Scene {
 type Scene struct {
 	Mage    *Player
 	Warrior *Player
+	Goblin  *Monster
+	Slime   *Monster
 }
 
 func (scene *Scene) Start() {
-	scene.Mage = &Player{Name: "Mage", Life: 10, Atk: 5}
 
-	monster1 := &Monster{Name: "Monster 1", Life: 10, Atk: 5, Def: 2}
-	player1 := &Player{Name: "Player 1", Life: 1, Atk: 10}
+	scene.Mage = &Player{Name: "Kyle", Life: 100, Atk: 10, Def: 5, Magic: 25}
+	scene.Warrior = &Player{Name: "Carlo", Life: 150, Atk: 20, Def: 10, Magic: 10}
+	scene.Goblin = &Monster{Name: "Gobs", Life: 50, Atk: 15, Def: 5, Magic: 5}
+	scene.Slime = &Monster{Name: "Gobs", Life: 15, Atk: 10, Def: 2, Magic: 3}
 
-	fmt.Printf("Monster life: %d\n", monster1.Life)
+	fmt.Printf("Monster life: %d\n", scene.Goblin.Life)
 
-	player1.AttackMonster(monster1)
+	scene.Warrior.AttackMonster(scene.Goblin)
 
-	if player1.IsDead() {
-		fmt.Println("Player 1 is dead")
+	if scene.Mage.IsDead() {
+		fmt.Println("Mage is dead")
 	}
 
-	fmt.Printf("Monster life after attack: %d\n", monster1.Life)
+	fmt.Printf("Goblin life after attack: %d\n", scene.Goblin.Life)
 
 	scene.End()
 }
