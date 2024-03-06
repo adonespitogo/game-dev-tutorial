@@ -6,6 +6,8 @@ type Monster struct {
 	Atk   int
 	Def   int
 	Magic int
+	Mdef  int
+	// Mdef = Magic Defense
 }
 
 func (s *Monster) AttackPlayer(target *Player) {
