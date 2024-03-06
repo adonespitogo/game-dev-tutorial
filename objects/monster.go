@@ -7,6 +7,6 @@ type Monster struct {
 	Def  int
 }
 
-func (mons *Monster) AttackPlayer(target *Player) {
-	target.Life = target.Life + target.Def - mons.Atk
+func (s *Monster) AttackPlayer(target *Player) {
+	target.Life = target.Life + target.Def - s.Atk
 }

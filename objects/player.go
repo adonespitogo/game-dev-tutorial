@@ -2,24 +2,24 @@ package objects
 
 type Player struct {
 	Name string
-    Life int
+	Life int
 	Atk  int
 	Def  int
 }
 
 // Add a method to the player
-func (self *Player) AttackPlayer(target *Player) {
-    target.Life = target.Life - self.Atk
+func (s *Player) AttackPlayer(target *Player) {
+	target.Life = target.Life + target.Def - s.Atk
 }
 
-func (self *Player) AttackMonster(mons *Monster) {
-    mons.Life = mons.Life - self.Atk
+func (s *Player) AttackMonster(mons *Monster) {
+	mons.Life = mons.Life - s.Atk
 }
 
-func (self *Player) Heal(pts int) {
-    self.Life = self.Life + pts
+func (s *Player) Heal(pts int) {
+	s.Life = s.Life + pts
 }
 
-func (self *Player) IsDead() bool {
-    return self.Life <= 0
+func (s *Player) IsDead() bool {
+	return s.Life <= 0
 }
