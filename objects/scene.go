@@ -20,7 +20,7 @@ func (scene *Scene) Start() {
 	scene.Warrior = &Player{Name: "Carlo", Life: 150, Atk: 20, Def: 10, Magic: 10}
 	scene.Goblin = &Monster{Name: "Goblin King", Life: 50, Atk: 15, Def: 5, Magic: 5}
 	scene.Slime = &Monster{Name: "Mega Slime", Life: 15, Atk: 10, Def: 2, Magic: 3}
-	scene.Archer = &Player{Name: "Mega Slime", Life: 15, Atk: 10, Def: 2, Magic: 3}
+	scene.Archer = &Player{Name: "Marc", Life: 100, Atk: 20, Def: 2, Magic: 1}
 
 	fmt.Printf("Monster life: %d\n", scene.Goblin.Life)
 
