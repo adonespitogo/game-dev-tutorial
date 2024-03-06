@@ -1,5 +1,7 @@
 package objects
 
+import "fmt"
+
 type Player struct {
 	Name  string
 	Life  int
@@ -10,11 +12,21 @@ type Player struct {
 
 // Add a method to the player
 func (s *Player) AttackPlayer(target *Player) {
-	target.Life = target.Life + target.Def - s.Atk
+	if !s.IsDead() {
+		fmt.Printf("%s attacked %s\n", s.Name, target.Name)
+		target.Life = target.Life + target.Def - s.Atk
+	} else {
+		fmt.Printf("Player Dead - Skip Turn")
+	}
 }
 
 func (s *Player) AttackMonster(mons *Monster) {
-	mons.Life = mons.Life + mons.Def - s.Atk
+	if !s.IsDead() {
+		fmt.Printf("%s attacked %s\n", s.Name, mons.Name)
+		mons.Life = mons.Life + mons.Def - s.Atk
+	} else {
+		fmt.Printf("Player Dead - Skip Turn\n")
+	}
 }
 
 func (s *Player) Heal(pts *Player) {

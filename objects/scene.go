@@ -47,36 +47,23 @@ func (scene *Scene) Battle(monster *Monster) {
 	for !(scene.Mage.IsDead() && scene.Warrior.IsDead() || monster.IsDead()) {
 
 		if x%2 == 0 { // 1st Turn
+
 			fmt.Print("1: ")
-
-			if !scene.Warrior.IsDead() {
-				scene.Warrior.AttackMonster(monster)
-				fmt.Printf("%s attacked %s\n", scene.Warrior.Name, monster.Name)
-			} else {
-				fmt.Println("Player Dead - Skip Turn")
-			}
-
+			scene.Warrior.AttackMonster(monster)
 			x++
 
 		} else if x > y { // 2nd Turn
+
 			fmt.Print("2: ")
-
-			if !scene.Mage.IsDead() {
-				scene.Mage.AttackMonster(monster)
-				fmt.Printf("%s attacked %s\n", scene.Mage.Name, monster.Name)
-			} else {
-				fmt.Println("Player Dead - Skip Turn")
-			}
-
+			scene.Mage.AttackMonster(monster)
 			y++
 
 		} else { // 3rd turn
-			fmt.Print("3: ")
 
+			fmt.Print("3: ")
 			monster.AttackPlayer(scene.Mage)
 			monster.AttackPlayer(scene.Warrior)
 			fmt.Printf("%s launched an attack\n", monster.Name)
-
 			x++
 			y++
 
