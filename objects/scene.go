@@ -43,7 +43,7 @@ func (scene *Scene) Battle(monster *Monster) {
 
 	for !(scene.Mage.IsDead() && scene.Warrior.IsDead() || monster.IsDead()) {
 
-		if x > y { // 2nd Turn
+		if x%2 == 0 { // 1st Turn
 			fmt.Print("2: ")
 
 			if !scene.Warrior.IsDead() {
@@ -53,9 +53,9 @@ func (scene *Scene) Battle(monster *Monster) {
 				fmt.Println("Player Dead - Skip Turn")
 			}
 
-			y++
+			x++
 
-		} else if x%2 == 0 { // 1st Turn
+		} else if x > y { // 2nd Turn
 			fmt.Print("1: ")
 
 			if !scene.Mage.IsDead() {
@@ -65,7 +65,7 @@ func (scene *Scene) Battle(monster *Monster) {
 				fmt.Println("Player Dead - Skip Turn")
 			}
 
-			x++
+			y++
 
 		} else { // 3rd turn
 			fmt.Print("3: ")
