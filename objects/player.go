@@ -14,7 +14,7 @@ func (s *Player) AttackPlayer(target *Player) {
 }
 
 func (s *Player) AttackMonster(mons *Monster) {
-	mons.Life = mons.Life - s.Atk
+	mons.Life = mons.Life + mons.Def - s.Atk
 }
 
 func (s *Player) Heal(pts *Player) {
