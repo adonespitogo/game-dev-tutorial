@@ -9,7 +9,6 @@ func NewScene() *Scene {
 type Scene struct {
 	Mage    *Player
 	Warrior *Player
-	Monster *Monster
 }
 
 func (scene *Scene) Start() {
@@ -35,21 +34,21 @@ func (scene *Scene) End() {
 	fmt.Printf("Game over! Mage Life: %d", scene.Mage.Life)
 }
 
-func Battle(p1 *Player, p2 *Player, p3 *Monster) {
+func (scene *Scene) Battle(monster *Monster) {
 
 	x := 0
 	y := 0
 
 	fmt.Println("Battle Start")
 
-	for !(p1.IsDead() && p2.IsDead() || p3.IsDead()) {
+	for !(scene.Mage.IsDead() && scene.Warrior.IsDead() || monster.IsDead()) {
 
 		if x > y { // 2nd Turn
 			fmt.Print("2: ")
 
-			if !p2.IsDead() {
-				p2.AttackMonster(p3)
-				fmt.Printf("%s attacked %s", p2.Name, p3.Name)
+			if !scene.Warrior.IsDead() {
+				scene.Warrior.AttackMonster(monster)
+				fmt.Printf("%s attacked %s", scene.Warrior.Name, monster.Name)
 			} else {
 				fmt.Println("Player Dead - Skip Turn")
 			}
@@ -59,9 +58,9 @@ func Battle(p1 *Player, p2 *Player, p3 *Monster) {
 		} else if x%2 == 0 { // 1st Turn
 			fmt.Print("1: ")
 
-			if !p1.IsDead() {
-				p1.AttackMonster(p3)
-				fmt.Printf("%s attacked %s", p1.Name, p3.Name)
+			if !scene.Mage.IsDead() {
+				scene.Mage.AttackMonster(monster)
+				fmt.Printf("%s attacked %s", scene.Mage.Name, monster.Name)
 			} else {
 				fmt.Println("Player Dead - Skip Turn")
 			}
@@ -71,9 +70,9 @@ func Battle(p1 *Player, p2 *Player, p3 *Monster) {
 		} else { // 3rd turn
 			fmt.Print("3: ")
 
-			p3.AttackPlayer(p1)
-			p3.AttackPlayer(p2)
-			fmt.Printf("%s launched an attack", p3.Name)
+			monster.AttackPlayer(scene.Mage)
+			monster.AttackPlayer(scene.Warrior)
+			fmt.Printf("%s launched an attack", monster.Name)
 
 			x++
 			y++
