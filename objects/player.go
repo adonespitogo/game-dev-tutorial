@@ -9,6 +9,7 @@ type Player struct {
 	Def   int
 	Magic int
 	MDef  int
+	Dex   int
 	//Mdef = Magic defense
 }
 
