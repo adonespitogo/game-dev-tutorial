@@ -17,8 +17,8 @@ func (s *Player) AttackMonster(mons *Monster) {
 	mons.Life = mons.Life - s.Atk
 }
 
-func (s *Player) Heal(pts int) {
-	s.Life = s.Life + pts
+func (s *Player) Heal(pts *Player) {
+	s.Life = s.Life + pts.Magic
 }
 
 func (s *Player) IsDead() bool {
