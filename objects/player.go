@@ -1,10 +1,11 @@
 package objects
 
 type Player struct {
-	Name string
-	Life int
-	Atk  int
-	Def  int
+	Name  string
+	Life  int
+	Atk   int
+	Def   int
+	Magic int
 }
 
 // Add a method to the player
