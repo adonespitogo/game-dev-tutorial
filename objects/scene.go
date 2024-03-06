@@ -70,9 +70,11 @@ func Battle(p1 *Player, p2 *Player, p3 *Monster) {
 
 		} else { // 3rd turn
 			fmt.Print("3: ")
+
 			p3.AttackPlayer(p1)
 			p3.AttackPlayer(p2)
 			fmt.Printf("%s launched an attack", p3.Name)
+
 			x++
 			y++
 
