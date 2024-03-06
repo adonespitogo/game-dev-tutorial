@@ -15,3 +15,7 @@ func (s *Monster) AttackPlayer(target *Player) {
 func (s *Monster) Heal(pts *Monster) {
 	s.Life = s.Life + pts.Magic
 }
+
+func (s *Monster) IsDead() bool {
+	return s.Life <= 0
+}
