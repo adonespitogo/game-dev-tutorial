@@ -14,24 +14,23 @@ type Player struct {
 
 // Add a method to the player
 func (s *Player) AttackPlayer(target *Player) {
-	if !s.IsDead() {
-		fmt.Printf("%s attacked %s\n", s.Name, target.Name)
-		target.Life = target.Life + target.Def - s.Atk
-	} else {
-		fmt.Printf("Player Dead - Skip Turn")
-	}
+
+	fmt.Printf("%s attacked %s\n", s.Name, target.Name)
+	target.Life = target.Life + target.Def - s.Atk
 }
 
 func (s *Player) AttackMonster(mons *Monster) {
-	if !s.IsDead() {
-		fmt.Printf("%s attacked %s\n", s.Name, mons.Name)
-		mons.Life = mons.Life + mons.Def - s.Atk
-	} else {
-		fmt.Printf("Player Dead - Skip Turn\n")
-	}
+	fmt.Printf("%s attacked %s\n", s.Name, mons.Name)
+	mons.Life = mons.Life + mons.Def - s.Atk
 }
 
-func (s *Player) Heal(pts *Player) {
+func (s *Player) HealSelf(pts *Player) {
+	fmt.Printf("%s used Heal on self", s.Name)
+	s.Life = s.Life + pts.Magic
+}
+
+func (s *Player) HealOther(pts *Player) {
+	fmt.Printf("%s used Heal on %s", s.Name, pts.Name)
 	s.Life = s.Life + pts.Magic
 }
 
