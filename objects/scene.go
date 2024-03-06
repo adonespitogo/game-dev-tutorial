@@ -85,7 +85,7 @@ func (scene *Scene) Battle(monster *Monster) {
 		}
 
 	}
-
+	//Dodongcaloy was here
 	fmt.Println("Battle End")
 
 }
