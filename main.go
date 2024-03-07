@@ -10,12 +10,16 @@ func main() {
 	scene := objects.NewScene()
 	scene.Start()
 
+	scene.PrintStatus()
+
 	scene.Battle(scene.Slime)
+
+	scene.PrintStatus()
 
 	if scene.AllPlayerDead() {
 		fmt.Println("GAME OVER, YOU LOSE")
 	} else {
 		scene.Battle(scene.Goblin)
 	}
-
+	scene.PrintStatus()
 }

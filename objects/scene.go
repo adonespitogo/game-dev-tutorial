@@ -90,6 +90,7 @@ func (scene *Scene) End() {
 	fmt.Printf("Game over! Mage Life: %d\n", scene.Mage.Life)
 }
 
+<<<<<<< HEAD
 //AS =ATTACK SEQUENCE
 func ( sort *Scene)AS{
 	if (choose == "1"){		
@@ -100,3 +101,17 @@ func ( sort *Scene)AS{
 		scene.Archer.PlayerTurn(monster)
 	} 
 }
+=======
+func (scene *Scene) PrintStatus() {
+	fmt.Println(" ")
+	fmt.Println("Players")
+	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Warrior.Name, scene.Warrior.Life, scene.Warrior.Atk, scene.Warrior.Def, scene.Warrior.Magic)
+	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Mage.Name, scene.Mage.Life, scene.Mage.Atk, scene.Mage.Def, scene.Mage.Magic)
+	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Archer.Name, scene.Archer.Life, scene.Archer.Atk, scene.Archer.Def, scene.Archer.Magic)
+	fmt.Println(" ")
+	fmt.Println("Monster")
+	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Goblin.Name, scene.Goblin.Life, scene.Goblin.Atk, scene.Goblin.Def, scene.Goblin.Magic)
+	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Slime.Name, scene.Slime.Life, scene.Slime.Atk, scene.Slime.Def, scene.Slime.Magic)
+	fmt.Println(" ")
+}
+>>>>>>> d659674f471968097dc23a9619e0f5850789e1b7
