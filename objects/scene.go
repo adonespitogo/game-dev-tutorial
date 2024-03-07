@@ -33,33 +33,22 @@ func (scene *Scene) Battle(monster *Monster) {
 
 	for x := 0; !(scene.AllPlayerDead() || monster.IsDead()); x++ {
 
-			if x == 0 { // 1st Turn
-
+		if x == 0 { // 1st Turn
 
 			fmt.Println("Caloy Turn")
-			fmt.Println("Choose Character:")
-			fmt.Println("1: Warrior  2:Mage 3:Archer")
-
-
-			choose := "0"
-			fmt.Scanln(&n)
-
-
-			AS()
-			
-		
-			}
-		}
+			scene.PrintStatus()
+			scene.AS(monster)
 
 		} else if x == 1 { // 2nd Turn
 
 			fmt.Print("2: ")
-			scene.Mage.PlayerTurn(monster)
-
+			scene.PrintStatus()
+			scene.AS(monster)
 		} else if x == 2 { // 3rd Turn
 
 			fmt.Print("3: ")
-			scene.Archer.PlayerTurn(monster)
+			scene.PrintStatus()
+			scene.AS(monster)
 
 		} else if x == 3 { // 4th turn
 
@@ -90,18 +79,23 @@ func (scene *Scene) End() {
 	fmt.Printf("Game over! Mage Life: %d\n", scene.Mage.Life)
 }
 
-<<<<<<< HEAD
 //AS =ATTACK SEQUENCE
-func ( sort *Scene)AS{
-	if (choose == "1"){		
-		scene.Warrior.PlayerTurn(monster)
-	}else if (choose== "2"){
-		scene.Mage.PlayerTurn(monster)
-	}else if (choose =="3"){
-		scene.Archer.PlayerTurn(monster)
-	} 
+func (sort *Scene) AS(monster *Monster) {
+
+	fmt.Println("Choose Character:")
+	fmt.Println("1: Warrior  2:Mage 3:Archer")
+	choose := "0"
+	fmt.Scanln(&choose)
+
+	if choose == "1" {
+		sort.Warrior.PlayerTurn(monster)
+	} else if choose == "2" {
+		sort.Mage.PlayerTurn(monster)
+	} else if choose == "3" {
+		sort.Archer.PlayerTurn(monster)
+	}
 }
-=======
+
 func (scene *Scene) PrintStatus() {
 	fmt.Println(" ")
 	fmt.Println("Players")
@@ -114,4 +108,3 @@ func (scene *Scene) PrintStatus() {
 	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Slime.Name, scene.Slime.Life, scene.Slime.Atk, scene.Slime.Def, scene.Slime.Magic)
 	fmt.Println(" ")
 }
->>>>>>> d659674f471968097dc23a9619e0f5850789e1b7
