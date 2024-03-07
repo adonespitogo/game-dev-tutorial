@@ -50,15 +50,20 @@ func (s *Player) MAtkMons(mons *Monster) {
 
 func (s *Player) PlayerTurn(m *Monster) {
 	if !s.IsDead() {
-		n := "0"
-		fmt.Scanln(&n)
-		s.ChooseMove(n, m) //Option
+		s.ChooseMove(m) //Option
 	} else {
 		fmt.Println("Player Dead - Skip turn")
 	}
 }
 
-func (s *Player) ChooseMove(n string, m *Monster) {
+func (s *Player) ChooseMove(m *Monster) {
+
+	fmt.Printf("%s turn\n", s.Name)
+	fmt.Printf("1: Attack  2:Heal  3:Skip\n")
+	fmt.Printf(">>> ")
+
+	n := "0"
+	fmt.Scanln(&n)
 
 	switch n {
 	case "1":
