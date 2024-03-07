@@ -15,14 +15,21 @@ type Player struct {
 
 // Add a method to the player
 func (s *Player) AttackPlayer(target *Player) {
-
 	fmt.Printf("%s attacked %s\n", s.Name, target.Name)
-	target.Life = target.Life + target.Def - s.Atk
+	if target.Def >= s.Atk {
+		target.Life = target.Life - 1
+	} else {
+		target.Life = target.Life + target.Def - target.Atk
+	}
 }
 
 func (s *Player) AttackMonster(mons *Monster) {
 	fmt.Printf("%s attacked %s\n", s.Name, mons.Name)
-	mons.Life = mons.Life + mons.Def - s.Atk
+	if mons.Def >= s.Atk {
+		mons.Life = mons.Life - 1
+	} else {
+		mons.Life = mons.Life + mons.Def - s.Atk
+	}
 }
 
 func (s *Player) HealSelf() {
