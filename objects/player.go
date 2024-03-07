@@ -26,7 +26,7 @@ func (s *Player) AttackMonster(mons *Monster) {
 }
 
 func (s *Player) HealSelf() {
-	fmt.Printf("%s used Heal on self", s.Name)
+	fmt.Printf("%s used Heal on self\n", s.Name)
 	s.Life = s.Life + s.Magic
 }
 
@@ -50,8 +50,24 @@ func (s *Player) MAtkMons(mons *Monster) {
 
 func (s *Player) PlayerTurn(m *Monster) {
 	if !s.IsDead() {
-		s.AttackMonster(m) //Option
+		n := "0"
+		fmt.Scanln(&n)
+		s.ChooseMove(n, m) //Option
 	} else {
 		fmt.Println("Player Dead - Skip turn")
+	}
+}
+
+func (s *Player) ChooseMove(n string, m *Monster) {
+
+	switch n {
+	case "1":
+		s.AttackMonster(m)
+	case "2":
+		s.HealSelf()
+	case "3":
+		fmt.Println("Skip Turn")
+	default:
+		s.AttackMonster(m)
 	}
 }
