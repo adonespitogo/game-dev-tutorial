@@ -18,9 +18,9 @@ type Scene struct {
 
 func (scene *Scene) Start() {
 
-	scene.Mage = &Player{Name: "Kyle", Life: 100, Atk: 10, Def: 5, Magic: 25}
-	scene.Warrior = &Player{Name: "Carlo", Life: 150, Atk: 20, Def: 10, Magic: 10}
-	scene.Archer = &Player{Name: "Marc", Life: 100, Atk: 20, Def: 2, Magic: 1}
+	scene.Mage = &Player{Name: "Kyle", Life: 100, Atk: 10, Def: 5, Magic: 25, Dex: 10}
+	scene.Warrior = &Player{Name: "Carlo", Life: 150, Atk: 20, Def: 10, Magic: 10, Dex: 15}
+	scene.Archer = &Player{Name: "Marc", Life: 100, Atk: 20, Def: 2, Magic: 1, Dex: 12}
 
 	scene.Goblin = &Monster{Name: "Goblin King", Life: 50, Atk: 1500, Def: 500, Magic: 5}
 	scene.Slime = &Monster{Name: "Mega Slime", Life: 15, Atk: 10, Def: 2, Magic: 3}
@@ -33,10 +33,23 @@ func (scene *Scene) Battle(monster *Monster) {
 
 	for x := 0; !(scene.AllPlayerDead() || monster.IsDead()); x++ {
 
-		if x == 0 { // 1st Turn
+			if x == 0 { // 1st Turn
 
-			fmt.Print("1: ")
-			scene.Warrior.PlayerTurn(monster)
+
+			fmt.Println("Caloy Turn")
+			fmt.Println("Choose Character:")
+			fmt.Println("1: Warrior  2:Mage 3:Archer")
+
+
+			choose := "0"
+			fmt.Scanln(&n)
+
+
+			AS()
+			
+		
+			}
+		}
 
 		} else if x == 1 { // 2nd Turn
 
@@ -75,4 +88,15 @@ func (scene *Scene) AllMonsterDead() bool {
 
 func (scene *Scene) End() {
 	fmt.Printf("Game over! Mage Life: %d\n", scene.Mage.Life)
+}
+
+//AS =ATTACK SEQUENCE
+func ( sort *Scene)AS{
+	if (choose == "1"){		
+		scene.Warrior.PlayerTurn(monster)
+	}else if (choose== "2"){
+		scene.Mage.PlayerTurn(monster)
+	}else if (choose =="3"){
+		scene.Archer.PlayerTurn(monster)
+	} 
 }
