@@ -23,3 +23,39 @@ func main() {
 	}
 	scene.PrintStatus()
 }
+
+/*
+
+package main
+
+import "fmt"
+
+type Monster struct {
+    Level int
+    Attack int
+	Life int
+}
+
+type Player struct {
+	Life int
+}
+
+func NewMonster(level int) *Monster {
+	return &Monster{Life: 100, Level: level, Attack: level * 100}
+}
+
+func NewPlayer() *Player {
+	return &Player{Life: 100}
+}
+
+func main() {
+
+	// scene 1
+	// player := NewPlayer()
+	goblin1 := NewMonster(1)
+	goblin2 := NewMonster(2)
+
+	// scene 2
+    monster = NewMonster()
+}
+*/
