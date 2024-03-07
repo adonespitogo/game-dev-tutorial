@@ -11,11 +11,15 @@ type Monster struct {
 }
 
 func (s *Monster) AttackPlayer(target *Player) {
-	target.Life = target.Life + target.Def - s.Atk
+	if target.Def >= s.Atk {
+		target.Life--
+	} else {
+		target.Life = target.Life + target.Def - s.Atk
+	}
 }
 
-func (s *Monster) Heal(pts *Monster) {
-	s.Life = s.Life + pts.Magic
+func (s *Monster) HealSelf() {
+	s.Life = s.Life + s.Magic
 }
 
 func (s *Monster) IsDead() bool {
