@@ -32,14 +32,9 @@ func (s *Player) AttackMonster(mons *Monster) {
 	}
 }
 
-func (s *Player) HealSelf() {
-	fmt.Printf("%s used Heal on self\n", s.Name)
-	s.Life = s.Life + s.Magic
-}
-
-func (s *Player) HealOther(pts *Player) {
-	fmt.Printf("%s used Heal on %s", s.Name, pts.Name)
-	s.Life = s.Life + pts.Magic
+func (s *Player) Heal(target *Player) {
+	fmt.Printf("%s used Heal on %s", s.Name, target.Name)
+	target.Life = target.Life + s.Magic
 }
 
 func (s *Player) IsDead() bool {
@@ -76,7 +71,7 @@ func (s *Player) ChooseMove(m *Monster) {
 	case "1":
 		s.AttackMonster(m)
 	case "2":
-		s.HealSelf()
+		s.HealOther(s)
 	case "3":
 		fmt.Println("Skip Turn")
 	default:
