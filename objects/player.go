@@ -25,9 +25,9 @@ func (s *Player) AttackMonster(mons *Monster) {
 	mons.Life = mons.Life + mons.Def - s.Atk
 }
 
-func (s *Player) HealSelf(pts *Player) {
+func (s *Player) HealSelf() {
 	fmt.Printf("%s used Heal on self", s.Name)
-	s.Life = s.Life + pts.Magic
+	s.Life = s.Life + s.Magic
 }
 
 func (s *Player) HealOther(pts *Player) {
@@ -46,4 +46,12 @@ func (s *Player) MAtkPlayer(target *Player) {
 
 func (s *Player) MAtkMons(mons *Monster) {
 	mons.Life = mons.Life + mons.Def - s.Magic
+}
+
+func (s *Player) PlayerTurn(m *Monster) {
+	if !s.IsDead() {
+		s.AttackMonster(m) //Option
+	} else {
+		fmt.Println("Player Dead - Skip turn")
+	}
 }

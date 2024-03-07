@@ -1,6 +1,8 @@
 package objects
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func NewScene() *Scene {
 	return &Scene{}
@@ -33,31 +35,19 @@ func (scene *Scene) Battle(monster *Monster) {
 		if x == 0 { // 1st Turn
 
 			fmt.Print("1: ")
-			if !scene.Warrior.IsDead() {
-				scene.Warrior.AttackMonster(monster)
-			} else {
-				fmt.Println("Player Dead - Skip turn")
-			}
+			scene.Warrior.PlayerTurn(monster)
 
 		} else if x == 1 { // 2nd Turn
 
 			fmt.Print("2: ")
-			if !scene.Mage.IsDead() {
-				scene.Mage.AttackMonster(monster)
-			} else {
-				fmt.Println("Player Dead - Skip turn")
-			}
+			scene.Mage.PlayerTurn(monster)
 
-		} else if x == 2 { // 2nd Turn
+		} else if x == 2 { // 3rd Turn
 
 			fmt.Print("3: ")
-			if !scene.Archer.IsDead() {
-				scene.Archer.AttackMonster(monster)
-			} else {
-				fmt.Println("Player Dead - Skip turn")
-			}
+			scene.Archer.PlayerTurn(monster)
 
-		} else if x == 3 { // 3rd turn
+		} else if x == 3 { // 4th turn
 
 			fmt.Print("4: ")
 			monster.AttackPlayer(scene.Mage)
@@ -66,6 +56,7 @@ func (scene *Scene) Battle(monster *Monster) {
 			fmt.Printf("%s launched an attack\n", monster.Name)
 
 		} else {
+			//extra turn or reserved
 			x = -1
 		}
 	}
