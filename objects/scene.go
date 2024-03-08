@@ -19,9 +19,8 @@ type Scene struct {
 func (scene *Scene) Start() {
 
 	scene.Mage = NewPlayer("1")
-
-	scene.Warrior = &Player{Name: "Carlo", Life: 150, Atk: 20, Def: 10, Magic: 10}
-	scene.Archer = &Player{Name: "Marc", Life: 100, Atk: 20, Def: 2, Magic: 1}
+	scene.Warrior = NewPlayer("2")
+	scene.Archer = NewPlayer("3")
 
 	scene.Goblin = NewGoblin(12)
 	scene.Slime = NewSlime(10)
