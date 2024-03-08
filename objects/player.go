@@ -69,18 +69,29 @@ func (s *Player) ChooseMove(m *Monster) {
 	}
 }
 
-func NewPlayer(n string) *Player {
-	fmt.Println("Select Job Class")
+func NewPlayer(j string) *Player {
+
+	n := "No name"
+	fmt.Println("Enter Name")
 	fmt.Print(">>> ")
 	fmt.Scanln(&n)
-	switch n {
-	case "1":
-		return &Player{Name: "Mage", Life: 100, Def: 10, Atk: 10, Magic: 30}
-	case "2":
-		return &Player{Name: "Warrior", Life: 100, Def: 15, Atk: 20, Magic: 5}
-	case "3":
-		return &Player{Name: "Archer", Life: 100, Def: 10, Atk: 30, Magic: 5}
-	default:
-		return &Player{Name: "Jobless", Life: 100, Def: 10, Atk: 10, Magic: 5}
+
+	//fmt.Printf("Select Job for %s", n)
+	//fmt.Println("1: Mage  2: Warrior  3: Archer")
+	//fmt.Print(">>> ")
+	//j := "0"
+	//fmt.Scanln(&j)
+
+	fmt.Printf("Player %s has been created", n)
+	switch j {
+	case "1": //mage
+		return &Player{Name: n, Life: 100, Def: 10, Atk: 10, Magic: 30}
+	case "2": //warrior
+		return &Player{Name: n, Life: 150, Def: 15, Atk: 20, Magic: 5}
+	case "3": //archer
+		return &Player{Name: n, Life: 120, Def: 10, Atk: 30, Magic: 5}
+	default: //jobless
+		return &Player{Name: n, Life: 90, Def: 10, Atk: 10, Magic: 5}
 	}
+
 }

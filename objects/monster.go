@@ -25,7 +25,7 @@ func (s *Monster) IsDead() bool {
 }
 
 func NewGoblin(lvl int) *Monster {
-	if lvl <= 5 {
+	if lvl <= 5 && lvl > 0 {
 		return &Monster{Name: "Goblin Soldier", Life: (lvl * 10), Atk: 10, Def: 5, Magic: 5}
 	} else if lvl <= 10 {
 		return &Monster{Name: "Hob Goblin", Life: (lvl * 10), Atk: 15, Def: 10, Magic: 20}
@@ -39,7 +39,7 @@ func NewGoblin(lvl int) *Monster {
 }
 
 func NewSlime(lvl int) *Monster {
-	if lvl <= 5 {
+	if lvl <= 5 && lvl > 0 {
 		return &Monster{Name: "Blue Slime", Life: (lvl * 10), Atk: 10, Def: 5, Magic: 5}
 	} else if lvl <= 10 {
 		return &Monster{Name: "Large Slime", Life: (lvl * 10), Atk: 15, Def: 5, Magic: 20}
