@@ -71,16 +71,11 @@ func (s *Player) ChooseMove(m *Monster) {
 
 func NewPlayer(j string) *Player {
 
+	fmt.Println("")
 	n := "No name"
 	fmt.Println("Enter Name")
 	fmt.Print(">>> ")
 	fmt.Scanln(&n)
-
-	//fmt.Printf("Select Job for %s", n)
-	//fmt.Println("1: Mage  2: Warrior  3: Archer")
-	//fmt.Print(">>> ")
-	//j := "0"
-	//fmt.Scanln(&j)
 
 	fmt.Printf("Player %s has been created", n)
 	switch j {
