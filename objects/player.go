@@ -1,6 +1,8 @@
 package objects
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Player struct {
 	Name  string
@@ -64,5 +66,21 @@ func (s *Player) ChooseMove(m *Monster) {
 		fmt.Println("Skip Turn")
 	default:
 		s.AttackMonster(m)
+	}
+}
+
+func NewPlayer(n string) *Player {
+	fmt.Println("Select Job Class")
+	fmt.Print(">>> ")
+	fmt.Scanln(&n)
+	switch n {
+	case "1":
+		return &Player{Name: "Mage", Life: 100, Def: 10, Atk: 10, Magic: 30}
+	case "2":
+		return &Player{Name: "Warrior", Life: 100, Def: 15, Atk: 20, Magic: 5}
+	case "3":
+		return &Player{Name: "Archer", Life: 100, Def: 10, Atk: 30, Magic: 5}
+	default:
+		return &Player{Name: "Jobless", Life: 100, Def: 10, Atk: 10, Magic: 5}
 	}
 }
