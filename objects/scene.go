@@ -18,9 +18,9 @@ type Scene struct {
 
 func (scene *Scene) Start() {
 
-	scene.Mage = &Player{Name: "Kyle", Life: 100, Atk: 10, Def: 5, Magic: 25, Dex: 10}
-	scene.Warrior = &Player{Name: "Carlo", Life: 150, Atk: 20, Def: 10, Magic: 10, Dex: 15}
-	scene.Archer = &Player{Name: "Marc", Life: 100, Atk: 20, Def: 2, Magic: 1, Dex: 12}
+	scene.Mage = &Player{Name: "Kyle", Life: 100, Atk: 10, Def: 5, Magic: 25}
+	scene.Warrior = &Player{Name: "Carlo", Life: 150, Atk: 20, Def: 10, Magic: 10}
+	scene.Archer = &Player{Name: "Marc", Life: 100, Atk: 20, Def: 2, Magic: 1}
 
 	scene.Goblin = &Monster{Name: "Goblin King", Life: 50, Atk: 1500, Def: 500, Magic: 5}
 	scene.Slime = &Monster{Name: "Mega Slime", Life: 15, Atk: 10, Def: 2, Magic: 3}
@@ -35,20 +35,18 @@ func (scene *Scene) Battle(monster *Monster) {
 
 		if x == 0 { // 1st Turn
 
-			fmt.Println("Caloy Turn")
-			scene.PrintStatus()
-			scene.AS(monster)
+			fmt.Print("1: ")
+			scene.Warrior.PlayerTurn(monster)
 
 		} else if x == 1 { // 2nd Turn
 
 			fmt.Print("2: ")
-			scene.PrintStatus()
-			scene.AS(monster)
+			scene.Mage.PlayerTurn(monster)
+
 		} else if x == 2 { // 3rd Turn
 
 			fmt.Print("3: ")
-			scene.PrintStatus()
-			scene.AS(monster)
+			scene.Archer.PlayerTurn(monster)
 
 		} else if x == 3 { // 4th turn
 
@@ -59,7 +57,7 @@ func (scene *Scene) Battle(monster *Monster) {
 			fmt.Printf("%s launched an attack\n", monster.Name)
 
 		} else {
-			//extra turn or reserved
+			//extra turn or reserved for 2nd monster
 			x = -1
 		}
 	}
@@ -77,23 +75,6 @@ func (scene *Scene) AllMonsterDead() bool {
 
 func (scene *Scene) End() {
 	fmt.Printf("Game over! Mage Life: %d\n", scene.Mage.Life)
-}
-
-//AS =ATTACK SEQUENCE
-func (sort *Scene) AS(monster *Monster) {
-
-	fmt.Println("Choose Character:")
-	fmt.Println("1: Warrior  2:Mage 3:Archer")
-	choose := "0"
-	fmt.Scanln(&choose)
-
-	if choose == "1" {
-		sort.Warrior.PlayerTurn(monster)
-	} else if choose == "2" {
-		sort.Mage.PlayerTurn(monster)
-	} else if choose == "3" {
-		sort.Archer.PlayerTurn(monster)
-	}
 }
 
 func (scene *Scene) PrintStatus() {
