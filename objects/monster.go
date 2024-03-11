@@ -14,10 +14,12 @@ func (s *Monster) AttackPlayer(target *Player) {
 	} else {
 		target.Life = target.Life + target.Def - s.Atk
 	}
+
 }
 
 func (s *Monster) HealSelf() {
 	s.Life = s.Life + s.Magic
+
 }
 
 func (s *Monster) IsDead() bool {
