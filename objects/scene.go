@@ -22,13 +22,18 @@ func (scene *Scene) Start() {
 	scene.Mage = NewPlayer("1")
 	scene.Warrior = NewPlayer("2")
 	scene.Archer = NewPlayer("3")
-
+	scene.IntroStory()
 	scene.Goblin = NewGoblin(12)
 	scene.Slime = NewSlime(10)
 }
 
 func (scene *Scene) Battle(monster *Monster) {
-
+	fmt.Printf("the journey continues\n")
+	DotLoad(3)
+	Delay(3)
+	fmt.Printf("The heroes encountered a %s!\n", monster.Name)
+	DotLoad(3)
+	DialogSpacer(1)
 	fmt.Println("Battle Start")
 	DialogSpacer(1)
 
@@ -106,4 +111,31 @@ func DotLoad(n int) {
 	}
 	time.Sleep(600 * time.Millisecond)
 	DialogSpacer(1)
+}
+
+func Delay(n time.Duration) {
+	time.Sleep(n * time.Second)
+}
+
+func (s *Scene) IntroStory() {
+	DialogSpacer(1)
+	fmt.Printf("Welcome %s, %s and %s\n", s.Mage.Name, s.Warrior.Name, s.Archer.Name)
+	Delay(2)
+	fmt.Printf("Three new hereos now join to embark on a new journey.\n")
+	Delay(2)
+	fmt.Printf("In a mystical forest,")
+	Delay(2)
+	fmt.Printf(" three heroes stand ready.\n")
+	Delay(2)
+	fmt.Printf("Bound by fate, ")
+	Delay(2)
+	fmt.Printf("they venture forth into the unknown,\n")
+	Delay(2)
+	fmt.Printf("where challenges await ")
+	Delay(2)
+	fmt.Printf("and legends are made.")
+	DotLoad(7)
+	Delay(5)
+	DialogSpacer(1)
+	DotLoad(3)
 }

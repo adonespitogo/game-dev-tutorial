@@ -2,6 +2,7 @@ package objects
 
 import (
 	"fmt"
+	"time"
 )
 
 type Player struct {
@@ -15,6 +16,7 @@ type Player struct {
 // Add a method to the player
 func (s *Player) AttackPlayer(target *Player) {
 	DialogSpacer(1)
+	DotLoad(5)
 	fmt.Printf("%s attacked %s\n", s.Name, target.Name)
 	DialogSpacer(1)
 	if target.Def >= s.Atk {
@@ -26,7 +28,10 @@ func (s *Player) AttackPlayer(target *Player) {
 
 func (s *Player) AttackMonster(mons *Monster) {
 	DialogSpacer(1)
+	fmt.Printf("%s launches an attack on %s ", s.Name, mons.Name)
+	DotLoad(5)
 	fmt.Printf("%s attacked %s\n", s.Name, mons.Name)
+	time.Sleep(1 * time.Second)
 	DialogSpacer(1)
 	if mons.Def >= s.Atk {
 		mons.Life = mons.Life - 1
@@ -37,7 +42,10 @@ func (s *Player) AttackMonster(mons *Monster) {
 
 func (s *Player) Heal(target *Player) {
 	DialogSpacer(1)
+	fmt.Printf("%s is casting Heal", s.Name)
+	DotLoad(5)
 	fmt.Printf("%s used Heal on %s\n", s.Name, target.Name)
+	time.Sleep(1 * time.Second)
 	DialogSpacer(1)
 	target.Life = target.Life + s.Magic
 }
