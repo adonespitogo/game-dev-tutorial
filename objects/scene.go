@@ -5,29 +5,34 @@ import (
 	"time"
 )
 
-func NewScene() *Scene {
-	return &Scene{}
+func NewScene(mage *Player, warrior *Player, archer *Player, monster *Monster) *Scene {
+	return &Scene{
+		Mage:    mage,
+		Warrior: warrior,
+		Archer:  archer,
+		Monster: monster,
+	}
 }
 
 type Scene struct {
 	Mage    *Player
 	Warrior *Player
-	Goblin  *Monster
-	Slime   *Monster
+	// Goblin  *Monster
+	// Slime   *Monster
+	Monster *Monster
 	Archer  *Player
 }
 
 func (scene *Scene) Start() {
 
-	scene.Mage = NewPlayer("1")
-	scene.Warrior = NewPlayer("2")
-	scene.Archer = NewPlayer("3")
+	// scene.Mage = NewPlayer("1")
+	// scene.Warrior = NewPlayer("2")
+	// scene.Archer = NewPlayer("3")
 	scene.IntroStory()
-	scene.Goblin = NewGoblin(12)
-	scene.Slime = NewSlime(10)
-}
+	// scene.Goblin = NewGoblin(12)
+	// scene.Slime = NewSlime(10)
 
-func (scene *Scene) Battle(monster *Monster) {
+	monster := scene.Monster
 	fmt.Printf("and now the journey continues\n")
 	DotLoad(3)
 	Delay(2)
@@ -66,7 +71,7 @@ func (scene *Scene) AllPlayerDead() bool {
 }
 
 func (scene *Scene) AllMonsterDead() bool {
-	return scene.Goblin.IsDead() && scene.Slime.IsDead()
+	return scene.Monster.IsDead()
 }
 
 func (scene *Scene) End() {
@@ -80,10 +85,10 @@ func (scene *Scene) PrintStatus() {
 	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Warrior.Name, scene.Warrior.Life, scene.Warrior.Atk, scene.Warrior.Def, scene.Warrior.Magic)
 	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Mage.Name, scene.Mage.Life, scene.Mage.Atk, scene.Mage.Def, scene.Mage.Magic)
 	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Archer.Name, scene.Archer.Life, scene.Archer.Atk, scene.Archer.Def, scene.Archer.Magic)
-	DialogSpacer(1)
-	fmt.Println("Monster")
-	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Goblin.Name, scene.Goblin.Life, scene.Goblin.Atk, scene.Goblin.Def, scene.Goblin.Magic)
-	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Slime.Name, scene.Slime.Life, scene.Slime.Atk, scene.Slime.Def, scene.Slime.Magic)
+	// DialogSpacer(1)
+	// fmt.Println("Monster")
+	// fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Goblin.Name, scene.Goblin.Life, scene.Goblin.Atk, scene.Goblin.Def, scene.Goblin.Magic)
+	// fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Slime.Name, scene.Slime.Life, scene.Slime.Atk, scene.Slime.Def, scene.Slime.Magic)
 	DialogSpacer(1)
 }
 

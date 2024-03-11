@@ -7,15 +7,25 @@ import (
 )
 
 func main() {
-	scene := objects.NewScene()
-	scene.Start()
-	scene.Battle(scene.Slime)
-	if scene.AllPlayerDead() {
-		fmt.Println("GAME OVER, YOU LOSE")
-	} else {
-		scene.Battle(scene.Goblin)
+
+	monsters := []*objects.Monster{
+		objects.NewGoblin(1),
+		objects.NewGoblin(2),
+		objects.NewGoblin(3),
 	}
-	scene.PrintStatus()
+
+	mage := objects.NewPlayer("1")
+	warrior := objects.NewPlayer("2")
+	archer := objects.NewPlayer("3")
+
+	for _, monster := range monsters {
+		scene := objects.NewScene(mage, warrior, archer, monster)
+		scene.Start()
+		if scene.AllPlayerDead() {
+			fmt.Println("GAME OVER, YOU LOSE")
+		}
+		scene.PrintStatus()
+	}
 }
 
 /*
