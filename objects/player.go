@@ -38,6 +38,9 @@ func (s *Player) AttackMonster(mons *Monster) {
 	} else {
 		mons.Life = mons.Life + mons.Def - s.Atk
 	}
+	DialogSpacer(1)
+	fmt.Printf("%s HP went down to %d\n", mons.Name, mons.Life)
+	DialogSpacer(1)
 }
 
 func (s *Player) Heal(target *Player) {
