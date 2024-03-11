@@ -40,6 +40,8 @@ func (scene *Scene) Battle(monster *Monster) {
 	fmt.Scanln(&x)
 	switch x {
 	case "1":
+		fmt.Print("The heroes bravely accepted the challenge\n")
+		DotLoad(5)
 		fmt.Println("Battle Start")
 		DialogSpacer(1)
 		BattleSequence(scene, monster)
