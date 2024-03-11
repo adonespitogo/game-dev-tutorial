@@ -28,48 +28,35 @@ func (scene *Scene) Start() {
 }
 
 func (scene *Scene) Battle(monster *Monster) {
-	fmt.Printf("the journey continues\n")
+	fmt.Printf("and now the journey continues\n")
 	DotLoad(3)
-	Delay(3)
+	Delay(2)
 	fmt.Printf("The heroes encountered a %s!\n", monster.Name)
 	DotLoad(3)
 	DialogSpacer(1)
-	fmt.Println("Battle Start")
-	DialogSpacer(1)
-
-	for x := 0; !(scene.AllPlayerDead() || monster.IsDead()); x++ {
-
-		if x == 0 { // 1st Turn
-
-			// fmt.Print("1: ")
-			scene.Warrior.PlayerTurn(monster)
-
-		} else if x == 1 { // 2nd Turn
-
-			// fmt.Print("2: ")
-			scene.Mage.PlayerTurn(monster)
-
-		} else if x == 2 { // 3rd Turn
-
-			// fmt.Print("3: ")
-			scene.Archer.PlayerTurn(monster)
-
-		} else if x == 3 { // 4th turn
-
-			// fmt.Print("4: ")
-			monster.AttackPlayer(scene.Mage)
-			monster.AttackPlayer(scene.Warrior)
-			monster.AttackPlayer(scene.Archer)
-			fmt.Printf("%s launched an attack\n", monster.Name)
-			DialogSpacer(1)
-
-		} else {
-			//extra turn or reserved for 2nd monster
-			x = -1
-		}
+	x := "1"
+	fmt.Printf("1:Fight  2:Run\n")
+	fmt.Print(">>>")
+	fmt.Scanln(&x)
+	switch x {
+	case "1":
+		fmt.Println("Battle Start")
+		DialogSpacer(1)
+		BattleSequence(scene, monster)
+	case "2":
+		SkipBattle()
+	default:
+		fmt.Print("unable to decide the heroes where left with no choice\n")
+		DotLoad(3)
+		Delay(1)
+		fmt.Print("they are now forced to battle as they cannot escape")
+		DotLoad(3)
+		Delay(1)
+		fmt.Println("Battle Start")
+		DialogSpacer(1)
+		BattleSequence(scene, monster)
 	}
-	//Dodongcaloy was here
-	fmt.Println("Battle End")
+
 }
 
 func (scene *Scene) AllPlayerDead() bool {
@@ -138,4 +125,64 @@ func (s *Scene) IntroStory() {
 	Delay(5)
 	DialogSpacer(1)
 	DotLoad(3)
+}
+
+func BattleSequence(scene *Scene, monster *Monster) {
+	for x := 0; !(scene.AllPlayerDead() || monster.IsDead()); x++ {
+
+		if x == 0 { // 1st Turn
+
+			// fmt.Print("1: ")
+			scene.Warrior.PlayerTurn(monster)
+
+		} else if x == 1 { // 2nd Turn
+
+			// fmt.Print("2: ")
+			scene.Mage.PlayerTurn(monster)
+
+		} else if x == 2 { // 3rd Turn
+
+			// fmt.Print("3: ")
+			scene.Archer.PlayerTurn(monster)
+
+		} else if x == 3 { // 4th turn
+
+			// fmt.Print("4: ")
+			monster.AttackPlayer(scene.Mage)
+			monster.AttackPlayer(scene.Warrior)
+			monster.AttackPlayer(scene.Archer)
+			fmt.Printf("%s launched an attack\n", monster.Name)
+			DialogSpacer(1)
+
+		} else {
+			//extra turn or reserved for 2nd monster
+			x = -1
+		}
+	}
+	//Dodongcaloy was here
+	fmt.Println("Battle End")
+}
+
+func SkipBattle() {
+	fmt.Print("As the dense foliage parted, ")
+	Delay(2)
+	fmt.Print("revealing a clearing drenched in eerie moonlight,\n")
+	Delay(2)
+	fmt.Print("the three heroes ")
+	Delay(2)
+	fmt.Print("stumbled upon a fearsome creature lurking in the shadows.\n")
+	Delay(3)
+	fmt.Print("Its massive form towered over them,")
+	Delay(2)
+	fmt.Print("eyes gleaming with hunger, \n")
+	Delay(2)
+	fmt.Print("and its snarls echoed through the silence of the forest.\n")
+	Delay(4)
+	fmt.Print("With a collective sneer at the grotesque creature,\n")
+	Delay(4)
+	fmt.Print("the heroes turned tail and bolted,\n")
+	Delay(4)
+	fmt.Print("leaving behind any semblance of bravery in favor of self-preservation.\n")
+	DotLoad(5)
+	Delay(2)
 }

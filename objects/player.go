@@ -71,7 +71,7 @@ func (s *Player) ChooseMove(m *Monster) {
 	fmt.Printf(">> %s turn <<\n", s.Name)
 
 	DialogSpacer(1)
-	PlayerStatusBar(s)
+	PlayerStatusBar(s, m)
 	DialogSpacer(1)
 	SkillBox(s)
 
@@ -139,7 +139,10 @@ func SkillBox(s *Player) {
 	fmt.Printf(">>> ")
 }
 
-func PlayerStatusBar(s *Player) {
+func PlayerStatusBar(s *Player, target *Monster) {
+	fmt.Printf("%s		|	%s\n", s.Name, target.Name)
+	fmt.Printf("HP:%d	DEF:%d  |	HP:%d	DEF:%d  \n", s.Life, s.Def, target.Life, target.Def)
+
 	fmt.Printf("%s\n", s.Name)
 	fmt.Printf("HP  :%d   Def :%d\n", s.Life, s.Def)
 	fmt.Printf("Atk :%d   MAG :%d", s.Atk, s.Magic)
