@@ -2,6 +2,7 @@ package objects
 
 import (
 	"fmt"
+	"time"
 )
 
 func NewScene() *Scene {
@@ -96,4 +97,13 @@ func DialogSpacer(n int) {
 	for i := 0; i < n; i++ {
 		fmt.Println("")
 	}
+}
+
+func DotLoad(n int) {
+	for i := 0; i < n; i++ {
+		time.Sleep(400 * time.Millisecond)
+		fmt.Print(".")
+	}
+	time.Sleep(600 * time.Millisecond)
+	DialogSpacer(1)
 }

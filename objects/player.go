@@ -63,6 +63,8 @@ func (s *Player) ChooseMove(m *Monster) {
 	fmt.Printf(">> %s turn <<\n", s.Name)
 
 	DialogSpacer(1)
+	PlayerStatusBar(s)
+	DialogSpacer(1)
 	SkillBox(s)
 
 	n := "0"
@@ -84,19 +86,30 @@ func NewPlayer(j string) *Player {
 
 	DialogSpacer(1)
 	n := "No name"
-	fmt.Println("Enter Name")
-	fmt.Print(">>> ")
-	fmt.Scanln(&n)
-	DialogSpacer(1)
-
-	fmt.Printf("Player %s has been created", n)
-	DialogSpacer(1)
 	switch j {
 	case "1": //mage
+		fmt.Println("Enter Mage Name")
+		fmt.Print(">>> ")
+		fmt.Scanln(&n)
+		DotLoad(3)
+		fmt.Printf("Player %s has been created", n)
+		DialogSpacer(1)
 		return &Player{Name: n, Life: 100, Def: 10, Atk: 10, Magic: 30}
 	case "2": //warrior
+		fmt.Println("Enter Warrior Name")
+		fmt.Print(">>> ")
+		fmt.Scanln(&n)
+		DotLoad(3)
+		fmt.Printf("Player %s has been created", n)
+		DialogSpacer(1)
 		return &Player{Name: n, Life: 150, Def: 15, Atk: 20, Magic: 5}
 	case "3": //archer
+		fmt.Println("Enter Archer Name")
+		fmt.Print(">>> ")
+		fmt.Scanln(&n)
+		DotLoad(3)
+		fmt.Printf("Player %s has been created", n)
+		DialogSpacer(1)
 		return &Player{Name: n, Life: 120, Def: 10, Atk: 30, Magic: 5}
 	default: //jobless
 		return &Player{Name: n, Life: 90, Def: 10, Atk: 10, Magic: 5}
@@ -116,4 +129,10 @@ func SkillBox(s *Player) {
 	fmt.Printf("<>===================<>\n")
 	DialogSpacer(1)
 	fmt.Printf(">>> ")
+}
+
+func PlayerStatusBar(s *Player) {
+	fmt.Printf("%s\n", s.Name)
+	fmt.Printf("HP  :%d   Def :%d\n", s.Life, s.Def)
+	fmt.Printf("Atk :%d   MAG :%d", s.Atk, s.Magic)
 }
