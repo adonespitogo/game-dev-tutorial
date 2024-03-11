@@ -39,7 +39,9 @@ func (s *Player) AttackMonster(mons *Monster) {
 		mons.Life = mons.Life + mons.Def - s.Atk
 	}
 	DialogSpacer(1)
+	Delay(2)
 	fmt.Printf("%s HP went down to %d\n", mons.Name, mons.Life)
+	Delay(2)
 	DialogSpacer(1)
 }
 
@@ -51,6 +53,11 @@ func (s *Player) Heal(target *Player) {
 	time.Sleep(1 * time.Second)
 	DialogSpacer(1)
 	target.Life = target.Life + s.Magic
+	Delay(2)
+	DialogSpacer(1)
+	fmt.Printf("%s Life went up to %d HP\n", target.Name, target.Life)
+	DialogSpacer(1)
+	Delay(2)
 }
 
 func (s *Player) IsDead() bool {

@@ -155,7 +155,12 @@ func BattleSequence(scene *Scene, monster *Monster) {
 			monster.AttackPlayer(scene.Archer)
 			fmt.Printf("%s launched an attack\n", monster.Name)
 			DialogSpacer(1)
-
+			Delay(2)
+			fmt.Printf("%s life went down to %d HP\n", scene.Mage.Name, scene.Mage.Life)
+			fmt.Printf("%s life went down to %d HP\n", scene.Warrior.Name, scene.Warrior.Life)
+			fmt.Printf("%s life went down to %d HP\n", scene.Archer.Name, scene.Archer.Life)
+			DialogSpacer(1)
+			Delay(2)
 		} else {
 			//extra turn or reserved for 2nd monster
 			x = -1
