@@ -36,7 +36,7 @@ func (scene *Scene) Battle(monster *Monster) {
 	DialogSpacer(1)
 	x := "1"
 	fmt.Printf("1:Fight  2:Run\n")
-	fmt.Print(">>>")
+	fmt.Print(">>> ")
 	fmt.Scanln(&x)
 	switch x {
 	case "1":
