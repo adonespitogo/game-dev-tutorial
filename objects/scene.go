@@ -29,31 +29,33 @@ func (scene *Scene) Start() {
 func (scene *Scene) Battle(monster *Monster) {
 
 	fmt.Println("Battle Start")
+	DialogSpacer(1)
 
 	for x := 0; !(scene.AllPlayerDead() || monster.IsDead()); x++ {
 
 		if x == 0 { // 1st Turn
 
-			fmt.Print("1: ")
+			// fmt.Print("1: ")
 			scene.Warrior.PlayerTurn(monster)
 
 		} else if x == 1 { // 2nd Turn
 
-			fmt.Print("2: ")
+			// fmt.Print("2: ")
 			scene.Mage.PlayerTurn(monster)
 
 		} else if x == 2 { // 3rd Turn
 
-			fmt.Print("3: ")
+			// fmt.Print("3: ")
 			scene.Archer.PlayerTurn(monster)
 
 		} else if x == 3 { // 4th turn
 
-			fmt.Print("4: ")
+			// fmt.Print("4: ")
 			monster.AttackPlayer(scene.Mage)
 			monster.AttackPlayer(scene.Warrior)
 			monster.AttackPlayer(scene.Archer)
 			fmt.Printf("%s launched an attack\n", monster.Name)
+			DialogSpacer(1)
 
 		} else {
 			//extra turn or reserved for 2nd monster
@@ -73,18 +75,25 @@ func (scene *Scene) AllMonsterDead() bool {
 }
 
 func (scene *Scene) End() {
-	fmt.Printf("Game over! Mage Life: %d\n", scene.Mage.Life)
+	DialogSpacer(1)
+	fmt.Printf("Game over!")
 }
 
 func (scene *Scene) PrintStatus() {
-	fmt.Println(" ")
+	DialogSpacer(1)
 	fmt.Println("Players")
 	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Warrior.Name, scene.Warrior.Life, scene.Warrior.Atk, scene.Warrior.Def, scene.Warrior.Magic)
 	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Mage.Name, scene.Mage.Life, scene.Mage.Atk, scene.Mage.Def, scene.Mage.Magic)
 	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Archer.Name, scene.Archer.Life, scene.Archer.Atk, scene.Archer.Def, scene.Archer.Magic)
-	fmt.Println(" ")
+	DialogSpacer(1)
 	fmt.Println("Monster")
 	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Goblin.Name, scene.Goblin.Life, scene.Goblin.Atk, scene.Goblin.Def, scene.Goblin.Magic)
 	fmt.Printf("%s: Life: %d, Atk: %d, Def: %d, Magic: %d,\n", scene.Slime.Name, scene.Slime.Life, scene.Slime.Atk, scene.Slime.Def, scene.Slime.Magic)
-	fmt.Println(" ")
+	DialogSpacer(1)
+}
+
+func DialogSpacer(n int) {
+	for i := 0; i < n; i++ {
+		fmt.Println("")
+	}
 }

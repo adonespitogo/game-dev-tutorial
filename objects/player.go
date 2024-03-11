@@ -14,7 +14,9 @@ type Player struct {
 
 // Add a method to the player
 func (s *Player) AttackPlayer(target *Player) {
+	DialogSpacer(1)
 	fmt.Printf("%s attacked %s\n", s.Name, target.Name)
+	DialogSpacer(1)
 	if target.Def >= s.Atk {
 		target.Life = target.Life - 1
 	} else {
@@ -23,7 +25,9 @@ func (s *Player) AttackPlayer(target *Player) {
 }
 
 func (s *Player) AttackMonster(mons *Monster) {
+	DialogSpacer(1)
 	fmt.Printf("%s attacked %s\n", s.Name, mons.Name)
+	DialogSpacer(1)
 	if mons.Def >= s.Atk {
 		mons.Life = mons.Life - 1
 	} else {
@@ -32,7 +36,9 @@ func (s *Player) AttackMonster(mons *Monster) {
 }
 
 func (s *Player) Heal(target *Player) {
+	DialogSpacer(1)
 	fmt.Printf("%s used Heal on %s\n", s.Name, target.Name)
+	DialogSpacer(1)
 	target.Life = target.Life + s.Magic
 }
 
@@ -44,15 +50,20 @@ func (s *Player) PlayerTurn(m *Monster) {
 	if !s.IsDead() {
 		s.ChooseMove(m) //Option
 	} else {
+		DialogSpacer(1)
 		fmt.Println("Player Dead - Skip turn")
+		DialogSpacer(1)
+
 	}
 }
 
 func (s *Player) ChooseMove(m *Monster) {
 
-	fmt.Printf("%s turn\n", s.Name)
-	fmt.Printf("1: Attack  2:Heal  3:Skip\n")
-	fmt.Printf(">>> ")
+	DialogSpacer(1)
+	fmt.Printf(">> %s turn <<\n", s.Name)
+
+	DialogSpacer(1)
+	SkillBox(s)
 
 	n := "0"
 	fmt.Scanln(&n)
@@ -71,13 +82,15 @@ func (s *Player) ChooseMove(m *Monster) {
 
 func NewPlayer(j string) *Player {
 
-	fmt.Println("")
+	DialogSpacer(1)
 	n := "No name"
 	fmt.Println("Enter Name")
 	fmt.Print(">>> ")
 	fmt.Scanln(&n)
+	DialogSpacer(1)
 
 	fmt.Printf("Player %s has been created", n)
+	DialogSpacer(1)
 	switch j {
 	case "1": //mage
 		return &Player{Name: n, Life: 100, Def: 10, Atk: 10, Magic: 30}
@@ -89,4 +102,18 @@ func NewPlayer(j string) *Player {
 		return &Player{Name: n, Life: 90, Def: 10, Atk: 10, Magic: 5}
 	}
 
+}
+
+func SkillBox(s *Player) {
+	fmt.Printf("<>===================<>\n")
+	fmt.Printf("||  1 - Attack (%d)  ||\n", s.Atk)
+	if s.Magic > 9 {
+		fmt.Printf("||  2 - Heal (%d)    ||\n", s.Magic)
+	} else {
+		fmt.Printf("||  2 - Heal (%d)     ||\n", s.Magic)
+	}
+	fmt.Printf("||  3 - Skip Turn    ||\n")
+	fmt.Printf("<>===================<>\n")
+	DialogSpacer(1)
+	fmt.Printf(">>> ")
 }
