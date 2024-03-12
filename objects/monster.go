@@ -48,26 +48,69 @@ func NewGoblin(lvl int) *Monster {
 		def = 10
 		magic = 20
 	} else if lvl <= 15 {
-		return &Monster{Name: "Goblin General", Life: (lvl * 10), Atk: 20, Def: 15}
+		name = "Goblin General"
+		life = (lvl * 10)
+		atk = 20
+		def = 15
+		magic = 25
 	} else if lvl >= 16 {
-		return &Monster{Name: "Goblin King", Life: (lvl * 10), Atk: 25, Def: 20, Magic: 100}
+		name = "Goblin King"
+		life = (lvl * 10)
+		atk = 25
+		def = 20
+		magic = 100
 	} else {
-		return &Monster{Name: "Lost Goblin", Life: 50, Atk: 10, Def: 5, Magic: 5}
+		name = "Lost Goblin"
+		life = 50
+		atk = 10
+		def = 5
+		magic = 5
 	}
 
 	return &Monster{Name: name, Life: life, Atk: atk, Def: def, Magic: magic}
 }
 
 func NewSlime(lvl int) *Monster {
+
+	var (
+		name  string
+		life  int
+		atk   int
+		def   int
+		magic int
+	)
+
 	if lvl <= 5 && lvl > 0 {
-		return &Monster{Name: "Blue Slime", Life: (lvl * 10), Atk: 10, Def: 5, Magic: 5}
+		name = "Blue Slime"
+		life = (lvl * 15)
+		atk = 10
+		def = 5
+		magic = 5
 	} else if lvl <= 10 {
-		return &Monster{Name: "Large Slime", Life: (lvl * 10), Atk: 15, Def: 5, Magic: 20}
+		name = "Large Slime"
+		life = (lvl * 15)
+		atk = 15
+		def = 5
+		magic = 20
 	} else if lvl <= 15 {
-		return &Monster{Name: "Mega Slime", Life: (lvl * 15), Atk: 20, Def: 10, Magic: 50}
+		name = "Mega Slime"
+		life = (lvl * 15)
+		atk = 20
+		def = 10
+		magic = 25
 	} else if lvl >= 16 {
-		return &Monster{Name: "Ultra Slime", Life: (lvl * 20), Atk: 25, Def: 15, Magic: 100}
+		name = "Ultra Slime"
+		life = (lvl * 20)
+		atk = 25
+		def = 15
+		magic = 100
 	} else {
-		return &Monster{Name: "Small Slime", Life: 20, Atk: 10, Def: 5, Magic: 5}
+		name = "Small Slime"
+		life = 20
+		atk = 5
+		def = 5
+		magic = 5
 	}
+
+	return &Monster{Name: name, Life: life, Atk: atk, Def: def, Magic: magic}
 }

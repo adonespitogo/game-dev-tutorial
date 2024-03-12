@@ -28,7 +28,7 @@ func (scene *Scene) Start() {
 	// scene.Mage = NewPlayer("1")
 	// scene.Warrior = NewPlayer("2")
 	// scene.Archer = NewPlayer("3")
-	scene.IntroStory()
+	// scene.IntroStory()
 	// scene.Goblin = NewGoblin(12)
 	// scene.Slime = NewSlime(10)
 
@@ -111,9 +111,9 @@ func Delay(n time.Duration) {
 	time.Sleep(n * time.Second)
 }
 
-func (s *Scene) IntroStory() {
+func IntroStory(p1 *Player, p2 *Player, p3 *Player) {
 	DialogSpacer(1)
-	fmt.Printf("Welcome %s, %s and %s\n", s.Mage.Name, s.Warrior.Name, s.Archer.Name)
+	fmt.Printf("Welcome %s, %s and %s\n", p1.Name, p2.Name, p3.Name)
 	Delay(2)
 	fmt.Printf("Three new hereos now join to embark on a new journey.\n")
 	Delay(2)
@@ -129,7 +129,7 @@ func (s *Scene) IntroStory() {
 	Delay(2)
 	fmt.Printf("and legends are made.")
 	DotLoad(7)
-	Delay(5)
+	Delay(3)
 	DialogSpacer(1)
 	DotLoad(3)
 }

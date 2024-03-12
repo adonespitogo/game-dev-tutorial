@@ -18,6 +18,8 @@ func main() {
 	warrior := objects.NewPlayer("2")
 	archer := objects.NewPlayer("3")
 
+	objects.IntroStory(mage, warrior, archer)
+
 	for _, monster := range monsters {
 		scene := objects.NewScene(mage, warrior, archer, monster)
 		scene.Start()
