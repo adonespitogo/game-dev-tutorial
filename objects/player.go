@@ -106,7 +106,9 @@ func NewPlayer(j string) *Player {
 	n := "No name"
 	switch j {
 	case "1": //mage
-		fmt.Println("Enter Mage Name")
+		fmt.Printf("-----------------------\n")
+		fmt.Println("|   Enter Mage Name   |")
+		fmt.Printf("-----------------------\n")
 		fmt.Print(">>> ")
 		fmt.Scanln(&n)
 		DotLoad(3)
@@ -114,7 +116,9 @@ func NewPlayer(j string) *Player {
 		DialogSpacer(1)
 		return &Player{Name: n, Life: 100, Def: 10, Atk: 10, Magic: 30}
 	case "2": //warrior
-		fmt.Println("Enter Warrior Name")
+		fmt.Printf("--------------------------\n")
+		fmt.Println("|   Enter Warrior Name   |")
+		fmt.Printf("--------------------------\n")
 		fmt.Print(">>> ")
 		fmt.Scanln(&n)
 		DotLoad(3)
@@ -122,7 +126,9 @@ func NewPlayer(j string) *Player {
 		DialogSpacer(1)
 		return &Player{Name: n, Life: 150, Def: 15, Atk: 20, Magic: 5}
 	case "3": //archer
-		fmt.Println("Enter Archer Name")
+		fmt.Printf("-------------------------\n")
+		fmt.Println("|   Enter Archer Name   |")
+		fmt.Printf("-------------------------\n")
 		fmt.Print(">>> ")
 		fmt.Scanln(&n)
 		DotLoad(3)
