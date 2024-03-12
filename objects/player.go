@@ -104,8 +104,18 @@ func NewPlayer(j string) *Player {
 
 	DialogSpacer(1)
 	n := "No name"
+
+	var (
+		name  string
+		life  int
+		def   int
+		atk   int
+		magic int
+	)
+
 	switch j {
 	case "1": //mage
+
 		fmt.Printf("-----------------------\n")
 		fmt.Println("|   Enter Mage Name   |")
 		fmt.Printf("-----------------------\n")
@@ -114,8 +124,15 @@ func NewPlayer(j string) *Player {
 		DotLoad(3)
 		fmt.Printf("Player %s has been created", n)
 		DialogSpacer(1)
-		return &Player{Name: n, Life: 100, Def: 10, Atk: 10, Magic: 30}
+
+		name = n
+		life = 100
+		atk = 15
+		def = 10
+		magic = 35
+
 	case "2": //warrior
+
 		fmt.Printf("--------------------------\n")
 		fmt.Println("|   Enter Warrior Name   |")
 		fmt.Printf("--------------------------\n")
@@ -124,8 +141,15 @@ func NewPlayer(j string) *Player {
 		DotLoad(3)
 		fmt.Printf("Player %s has been created", n)
 		DialogSpacer(1)
-		return &Player{Name: n, Life: 150, Def: 15, Atk: 20, Magic: 5}
+
+		name = n
+		life = 150
+		atk = 25
+		def = 20
+		magic = 10
+
 	case "3": //archer
+
 		fmt.Printf("-------------------------\n")
 		fmt.Println("|   Enter Archer Name   |")
 		fmt.Printf("-------------------------\n")
@@ -134,10 +158,22 @@ func NewPlayer(j string) *Player {
 		DotLoad(3)
 		fmt.Printf("Player %s has been created", n)
 		DialogSpacer(1)
-		return &Player{Name: n, Life: 120, Def: 10, Atk: 30, Magic: 5}
+
+		name = n
+		life = 120
+		atk = 30
+		def = 10
+		magic = 10
+
 	default: //jobless
-		return &Player{Name: n, Life: 90, Def: 10, Atk: 10, Magic: 5}
+		name = n
+		life = 90
+		atk = 15
+		def = 10
+		magic = 10
 	}
+
+	return &Player{Name: name, Life: life, Atk: atk, Def: def, Magic: magic}
 
 }
 
@@ -158,8 +194,4 @@ func SkillBox(s *Player) {
 func PlayerStatusBar(s *Player, target *Monster) {
 	fmt.Printf("%s		|	%s\n", s.Name, target.Name)
 	fmt.Printf("HP:%d	DEF:%d  |	HP:%d	DEF:%d  \n", s.Life, s.Def, target.Life, target.Def)
-
-	fmt.Printf("%s\n", s.Name)
-	fmt.Printf("HP  :%d   Def :%d\n", s.Life, s.Def)
-	fmt.Printf("Atk :%d   MAG :%d", s.Atk, s.Magic)
 }
